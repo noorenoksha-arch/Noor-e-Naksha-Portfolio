@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নূর-ই-নকশা - Luxury Lighting & Decor</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif Bengali', serif;
+            background: #090A0F;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090A0F; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes goldGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { transform: translateY(-100px) translateX(50px); opacity: 1; }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(212, 175, 55, 0.3); box-shadow: 0 0 5px rgba(212, 175, 55, 0.1); }
+            50% { border-color: rgba(212, 175, 55, 0.8); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        }
+        
+        .fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .gold-glow {
+            animation: goldGlow 3s ease-in-out infinite;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37 !important;
+        }
+        
+        .product-img {
+            transition: transform 0.7s ease;
+        }
+        
+        .card-hover:hover .product-img {
+            transform: scale(1.1);
+        }
+        
+        .gold-border-glow {
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+        
+        /* Particle Animation */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #D4AF37;
+            border-radius: 50%;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app" class="min-h-screen bg-[#090A0F]">
+    
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#090A0F]/95 backdrop-blur-lg border-b border-[#D4AF37]/30" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Area - আপনার মনোগ্রাম এখানে বসবে -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-[#D4AF37] to-[#C59B2E] flex items-center justify-center" id="logoContainer">
+                        <img src="images/monogram.png" alt="Noor-E-Noksha Monogram" id="logoImg" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-black font-bold text-2xl>ন</span>'">
+                        <span class="text-black font-bold text-2xl hidden">ন</span>
+                    </div>
+                    <span class="text-[#F4E8C1] text-xl tracking-wider">নূর-ই-নকশা</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-[#F4E8C1] hover:text-[#D4AF37] transition-all duration-300 font-medium">হোম</a>
+                    <a href="#collections" class="text-[#F4E8C1] hover:text-[#D4AF37] transition-all duration-300 font-medium">কালেকশন</a>
+                    <a href="#wholesale" class="text-[#F4E8C1] hover:text-[#D4AF37] transition-all duration-300 font-medium">বিক্রয় কেন্দ্র</a>
+                    <a href="#contact" class="text-[#F4E8C1] hover:text-[#D4AF37] transition-all duration-300 font-medium">যোগাযোগ</a>
+                </div>
+                
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/8801717902201" target="_blank" class="hidden md:flex items-center space-x-2 bg-[#D4AF37] text-black px-5 py-2 rounded-full font-semibold hover:bg-[#C59B2E] transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2c-4.2-.3-8.2-2-11.2-5-2.5-2.5-4.2-6-5-10a2 2 0 012-2h3a2 2 0 012 1.5c.3 1.2.8 2.3 1.5 3.2l-1 1.1c1.3 2.1 3 3.8 5.2 5.2l1.1-1c.9.7 1.9 1.2 3.1 1.5A2 2 0 0122 16.92z"/></svg>
+                    <span>হোয়াটসঅ্যাপ</span>
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="md:hidden text-[#F4E8C1]">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#090A0F] border-t border-[#D4AF37]/30">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#" class="block text-[#F4E8C1] py-2 hover:text-[#D4AF37]">হোম</a>
+                <a href="#collections" class="block text-[#F4E8C1] py-2 hover:text-[#D4AF37]">কালেকশন</a>
+                <a href="#wholesale" class="block text-[#F4E8C1] py-2 hover:text-[#D4AF37]">বিক্রয় কেন্দ্র</a>
+                <a href="#contact" class="block text-[#F4E8C1] py-2 hover:text-[#D4AF37]">যোগাযোগ</a>
+                <a href="https://wa.me/8801717902201" target="_blank" class="flex items-center justify-center space-x-2 bg-[#D4AF37] text-black px-4 py-2 rounded-full font-semibold w-full">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2c-4.2-.3-8.2-2-11.2-5-2.5-2.5-4.2-6-5-10a2 2 0 012-2h3a2 2 0 012 1.5c.3 1.2.8 2.3 1.5 3.2l-1 1.1c1.3 2.1 3 3.8 5.2 5.2l1.1-1c.9.7 1.9 1.2 3.1 1.5A2 2 0 0122 16.92z"/></svg>
+                    <span>হোয়াটসঅ্যাপে অর্ডার করুন</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="images/hero-bg.jpg" alt="Hero Background" class="w-full h-full object-cover" id="heroImg" onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(ellipse at center, #1a1f2e 0%, #090A0F 100%)'">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#090A0F]/80 via-[#090A0F]/60 to-[#D4AF37]/20"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#D4AF37]/10 via-transparent to-transparent"></div>
+        </div>
+        
+        <!-- Animated Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none" id="particles"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-up">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-[#D4AF37] via-[#F4E8C1] to-[#D4AF37] bg-clip-text text-transparent gold-glow">
+                        নূর-ই-নকশা
+                    </span>
+                </h1>
+                <p class="text-[#D4AF37] text-lg md:text-xl tracking-widest mb-6">Sophistication Meets Style</p>
+                <p class="text-[#F4E8C1] text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-8">
+                    "নান্দনিকতা আর আভিজাত্যের এক নতুন ঠিকানা — যেখানে আলো আর নকশার মেলবন্ধনে তৈরি হয় আভিজাত্য।"
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-[#161922]/80 backdrop-blur-sm border border-[#D4AF37] rounded-full px-6 py-2 mb-8">
+                    <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    <span class="text-[#F4E8C1]">পাইকারী ও খুচরা অর্ডার নেওয়া হয়</span>
+                </div>
+                <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center space-x-3 bg-[#D4AF37] text-black px-8 py-4 rounded-full text-lg font-bold hover:bg-[#C59B2E] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2c-4.2-.3-8.2-2-11.2-5-2.5-2.5-4.2-6-5-10a2 2 0 012-2h3a2 2 0 012 1.5c.3 1.2.8 2.3 1.5 3.2l-1 1.1c1.3 2.1 3 3.8 5.2 5.2l1.1-1c.9.7 1.9 1.2 3.1 1.5A2 2 0 0122 16.92z"/></svg>
+                    <span>হোয়াটসঅ্যাপে অর্ডার করুন</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Collections -->
+    <section id="collections" class="py-20 bg-[#090A0F]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif text-[#F4E8C1] mb-3">
+                    আমাদের <span class="text-[#D4AF37]">সংগ্রহ</span>
+                </h2>
+                <div class="w-24 h-0.5 bg-[#D4AF37] mx-auto mb-4"></div>
+                <p class="text-[#F4E8C1]/70 max-w-2xl mx-auto">
+                    হাতে তৈরি প্রতিটি টুকরোয় গল্প আর আভিজাত্যের মধুর মিলন
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1: Allah Lamp -->
+                <div class="card-hover bg-[#161922] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-[#D4AF37]/20 to-[#090A0F]">
+                        <img src="images/product1.jpg" alt="Allah Lamp" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/161922/D4AF37?text=Allah+Lamp'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-semibold">
+                            Limited
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#F4E8C1] mb-2">Sacred Calligraphy - 'Allah'</h3>
+                        <p class="text-[#F4E8C1]/70 text-sm leading-relaxed">Glowing patterns of the Divine Name — a masterpiece of spiritual illumination that transforms any space into a sanctuary of peace.</p>
+                        <button class="mt-4 w-full border border-[#D4AF37] text-[#D4AF37] py-2 rounded-full hover:bg-[#D4AF37] hover:text-black transition-all duration-300 font-medium">
+                            বিস্তারিত দেখুন →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Muhammad Lamp -->
+                <div class="card-hover bg-[#161922] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-[#D4AF37]/20 to-[#090A0F]">
+                        <img src="images/product2.jpg" alt="Muhammad Lamp" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/161922/D4AF37?text=Muhammad+Lamp'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-semibold">
+                            Limited
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#F4E8C1] mb-2">Sacred Calligraphy - 'Muhammad'</h3>
+                        <p class="text-[#F4E8C1]/70 text-sm leading-relaxed">Prophetic light beautifully etched in radiant gold. Each curve and contour celebrates the light of the beloved Prophet ﷺ.</p>
+                        <button class="mt-4 w-full border border-[#D4AF37] text-[#D4AF37] py-2 rounded-full hover:bg-[#D4AF37] hover:text-black transition-all duration-300 font-medium">
+                            বিস্তারিত দেখুন →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3: Heritage Series -->
+                <div class="card-hover bg-[#161922] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-[#D4AF37]/20 to-[#090A0F]">
+                        <img src="images/product3.jpg" alt="Heritage Lamp" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/161922/D4AF37?text=Heritage+Series'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 right-4 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-sm font-semibold">
+                            Limited
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#F4E8C1] mb-2">The Heritage Series</h3>
+                        <p class="text-[#F4E8C1]/70 text-sm leading-relaxed">Traditional motifs fused with ambient lighting. A timeless collection that bridges Bangladesh's artistic heritage with contemporary elegance.</p>
+                        <button class="mt-4 w-full border border-[#D4AF37] text-[#D4AF37] py-2 rounded-full hover:bg-[#D4AF37] hover:text-black transition-all duration-300 font-medium">
+                            বিস্তারিত দেখুন →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Wholesale & Retail Card -->
+    <section id="wholesale" class="py-20 bg-[#161922]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#090A0F] to-[#1a1f2e] border border-[#D4AF37]/40 p-8 md:p-12 gold-border-glow">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-[#D4AF37]/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full px-4 py-1 mb-4">
+                            <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <span class="text-[#D4AF37] text-sm">বিশেষ সুবিধা</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#F4E8C1] mb-4">পাইকারী ও খুচরা অর্ডার</h3>
+                        <p class="text-[#F4E8C1]/80 text-lg leading-relaxed mb-6">
+                            আমরা বিশেষ ডিজাইনের জন্য কাস্টম অর্ডার গ্রহণ করি। আপনার বাড়ি বা প্রকল্পের জন্য 
+                            একচেটিয়া আলোকসজ্জা তৈরি করতে আমাদের বিশেষজ্ঞ টিমের সাথে যোগাযোগ করুন।
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="text-[#F4E8C1]/70 flex items-center space-x-2"><span class="text-[#D4AF37]">✓</span> <span>কাস্টমাইজড ডিজাইন সুবিধা</span></li>
+                            <li class="text-[#F4E8C1]/70 flex items-center space-x-2"><span class="text-[#D4AF37]">✓</span> <span>হোলসেল প্রাইসিং - বড় অর্ডারে বিশেষ ছাড়</span></li>
+                            <li class="text-[#F4E8C1]/70 flex items-center space-x-2"><span class="text-[#D4AF37]">✓</span> <span>দেশব্যাপী ডেলিভারি ব্যবস্থা</span></li>
+                            <li class="text-[#F4E8C1]/70 flex items-center space-x-2"><span class="text-[#D4AF37]">✓</span> <span>ফ্রি ডিজাইন কনসাল্টেশন</span></li>
+                        </ul>
+                        <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center space-x-2 bg-[#D4AF37] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#C59B2E] transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2c-4.2-.3-8.2-2-11.2-5-2.5-2.5-4.2-6-5-10a2 2 0 012-2h3a2 2 0 012 1.5c.3 1.2.8 2.3 1.5 3.2l-1 1.1c1.3 2.1 3 3.8 5.2 5.2l1.1-1c.9.7 1.9 1.2 3.1 1.5A2 2 0 0122 16.92z"/></svg>
+                            <span>অর্ডার করতে যোগাযোগ করুন</span>
+                        </a>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-64 h-64 rounded-full bg-gradient-to-r from-[#D4AF37]/20 to-transparent flex items-center justify-center">
+                            <div class="w-48 h-48 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
+                                <span class="text-7xl">✨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#0a0c12] border-t border-[#D4AF37]/30 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-[#D4AF37] to-[#C59B2E] flex items-center justify-center">
+                            <img src="images/monogram.png" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-black font-bold text-xl>ন</span>'">
+                        </div>
+                        <span class="text-[#F4E8C1] text-xl">নূর-ই-নকশা</span>
+                    </div>
+                    <p class="text-[#F4E8C1]/60 text-sm">আলো আর নকশার মেলবন্ধনে তৈরি হয় আভিজাত্য—আপনার স্থানকে করে তুলুন অনন্য।</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-[#D4AF37] font-semibold mb-4">দ্রুত লিংক</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-[#F4E8C1]/60 hover:text-[#D4AF37] text-sm">হোম</a></li>
+                        <li><a href="#collections" class="text-[#F4E8C1]/60 hover:text-[#D4AF37] text-sm">কালেকশন</a></li>
+                        <li><a href="#wholesale" class="text-[#F4E8C1]/60 hover:text-[#D4AF37] text-sm">বিক্রয় কেন্দ্র</a></li>
+                        <li><a href="#contact" class="text-[#F4E8C1]/60 hover:text-[#D4AF37] text-sm">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-[#D4AF37] font-semibold mb-4">যোগাযোগ</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3 text-[#F4E8C1]/60 text-sm">
+                            <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2c-4.2-.3-8.2-2-11.2-5-2.5-2.5-4.2-6-5-10a2 2 0 012-2h3a2 2 0 012 1.5c.3 1.2.8 2.3 1.5 3.2l-1 1.1c1.3 2.1 3 3.8 5.2 5.2l1.1-1c.9.7 1.9 1.2 3.1 1.5A2 2 0 0122 16.92z"/></svg>
+                            <a href="https://wa.me/8801717902201" class="hover:text-[#D4AF37]">+880 1717-902201</a>
+                        </li>
+                        <li class="flex items-center space-x-3 text-[#F4E8C1]/60 text-sm">
+                            <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="mailto:noorenoksha@gmail.com" class="hover:text-[#D4AF37]">noorenoksha@gmail.com</a>
+                        </li>
+                        <li class="flex items-center space-x-3 text-[#F4E8C1]/60 text-sm">
+                            <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <span>জামালপুর, বাংলাদেশ</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-[#D4AF37] font-semibold mb-4">সোশ্যাল মিডিয়া</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-10 h-10 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-[#F4E8C1]/40 text-xs">© 2024 নূর-ই-নকশা<br>সর্বস্বত্ব সংরক্ষিত</p>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-[#D4AF37]/20 text-center">
+                <p class="text-[#F4E8C1]/40 text-xs">Crafted with ✨ in Jamalpur | আলোয় ভরা প্রতিটি ঘর</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+    
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 20) {
+            navbar.classList.add('bg-[#090A0F]/95', 'backdrop-blur-lg');
+            navbar.classList.remove('bg-[#090A0F]/70');
+        } else {
+            navbar.classList.remove('bg-[#090A0F]/95', 'backdrop-blur-lg');
+            navbar.classList.add('bg-[#090A0F]/70');
+        }
+    });
+    
+    // Create Particles
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer) {
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animation = `float ${3 + Math.random() * 4}s infinite ease-in-out`;
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+    
+    // Intersection Observer for fade-up animations
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease-out';
+        observer.observe(el);
+    });
+</script>
+
+<style>
+    /* Additional styles for animations */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    .group-hover\:opacity-100:hover {
+        opacity: 1;
+    }
+    
+    .group-hover\:scale-110:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+</body>
+</html>
