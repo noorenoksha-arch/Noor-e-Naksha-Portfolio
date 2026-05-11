@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>নূর-ই-নকশা | Noor-E-Noksha - Luxury Lighting & Decor</title>
     
-    <!-- Tailwind CSS + Font Awesome Icons -->
+    <!-- Tailwind CSS + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -24,142 +24,256 @@
         ::-webkit-scrollbar-track { background: #0F1117; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 8px; }
         
+        /* ========================================
+           উজ্জ্বল লাইট রে অ্যানিমেশন (আপগ্রেড)
+           ======================================== */
+        
+        /* প্রধান লাইট রে ইফেক্ট - হিরো সেকশনে */
+        .hero-light-ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center, 
+                rgba(212, 175, 55, 0.4) 0%, 
+                rgba(212, 175, 55, 0.15) 30%, 
+                rgba(212, 175, 55, 0.05) 60%, 
+                transparent 80%);
+            pointer-events: none;
+            z-index: 5;
+            animation: lightRayPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes lightRayPulse {
+            0% { 
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            50% { 
+                opacity: 0.9;
+                transform: translate(-50%, -50%) scale(1.2);
+                background: radial-gradient(ellipse at center, 
+                    rgba(212, 175, 55, 0.6) 0%, 
+                    rgba(212, 175, 55, 0.25) 30%, 
+                    rgba(212, 175, 55, 0.08) 60%, 
+                    transparent 85%);
+            }
+            100% { 
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+        
+        /* ঘূর্ণায়মান লাইট রে - হিরো সেকশনে */
+        .rotating-light-ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            transform: translate(-50%, -50%);
+            background: conic-gradient(from 0deg, 
+                transparent 0deg, 
+                rgba(212, 175, 55, 0.15) 60deg, 
+                rgba(212, 175, 55, 0.3) 90deg, 
+                rgba(212, 175, 55, 0.15) 120deg, 
+                transparent 180deg);
+            pointer-events: none;
+            z-index: 5;
+            animation: rotateLightRay 8s linear infinite;
+            border-radius: 50%;
+        }
+        
+        @keyframes rotateLightRay {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* স্পটলাইট ইফেক্ট */
+        .spotlight {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 100%, 
+                rgba(212, 175, 55, 0.25) 0%, 
+                transparent 70%);
+            pointer-events: none;
+            z-index: 5;
+            animation: spotlightPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0.4; width: 80%; }
+            50% { opacity: 0.8; width: 100%; }
+        }
+        
+        /* কার্ডের লাইট রে ইফেক্ট */
+        .card-light-ray {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(212, 175, 55, 0.3) 0%, 
+                transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .card-hover:hover .card-light-ray {
+            opacity: 1;
+        }
+        
+        /* ঘরোয়া লাইট রে (Product section) */
+        .ambient-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, 
+                rgba(212, 175, 55, 0.2) 0%, 
+                transparent 70%);
+            pointer-events: none;
+            animation: ambientPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes ambientPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* ========================================
+           ফ্যান্সি অ্যানিমেশন (আপগ্রেড)
+           ======================================== */
+        
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(35px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes goldGlow {
-            0%, 100% { text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); }
-            50% { text-shadow: 0 0 22px rgba(212, 175, 55, 0.7); }
+            0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+            50% { text-shadow: 0 0 35px rgba(212, 175, 55, 0.9); }
         }
         
-        @keyframes borderGoldPulse {
-            0%, 100% { border-color: rgba(212, 175, 55, 0.35); box-shadow: 0 0 6px rgba(212, 175, 55, 0.2); }
-            50% { border-color: rgba(212, 175, 55, 0.9); box-shadow: 0 0 24px rgba(212, 175, 55, 0.4); }
+        .fade-up { animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+        .gold-glow { animation: goldGlow 3.2s ease-in-out infinite; }
+        
+        /* সোশ্যাল আইকন অ্যানিমেশন */
+        .social-icon-animate {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* নতুন অ্যানিমেশন - আলোক রশ্মি */
-        @keyframes lightRay {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
-            100% { transform: translateX(200%) translateY(200%) rotate(25deg); opacity: 0; }
+        .social-icon-dance {
+            animation: floatSoft 3s ease-in-out infinite;
         }
         
-        @keyframes floatingGlow {
-            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
-            50% { transform: translateY(-15px) translateX(10px); opacity: 0.8; }
+        @keyframes floatSoft {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
         }
         
-        @keyframes softPulse {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.05); }
+        .social-icon-ring {
+            transition: all 0.3s ease;
         }
         
-        .fade-up {
-            animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        .social-icon-ring:hover {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 0 25px currentColor;
         }
         
-        .gold-glow {
-            animation: goldGlow 3.2s ease-in-out infinite;
+        .btn-pulse {
+            position: relative;
+            overflow: hidden;
         }
         
-        .card-hover {
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        .btn-pulse:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
         }
         
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 35px -12px rgba(212, 175, 55, 0.28);
-            border-color: #D4AF37 !important;
+        .btn-pulse:hover:after {
+            animation: ripple 0.6s ease-out;
         }
         
-        .product-img {
-            transition: transform 0.65s ease-out;
+        @keyframes ripple {
+            0% { transform: scale(0, 0); opacity: 0.5; }
+            20% { transform: scale(25, 25); opacity: 0.3; }
+            100% { opacity: 0; transform: scale(40, 40); }
         }
         
-        .card-hover:hover .product-img {
-            transform: scale(1.08);
+        /* TikTok বিশেষ গ্রেডিয়েন্ট অ্যানিমেশন */
+        @keyframes tiktokGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        .gold-border-glow {
-            animation: borderGoldPulse 2.4s ease-in-out infinite;
+        .tiktok-glow {
+            background: linear-gradient(135deg, #000000, #20D5EC, #EE1D52, #000000);
+            background-size: 300% 300%;
+            animation: tiktokGradient 3s ease infinite;
         }
         
-        .order-glow-box {
-            background: linear-gradient(135deg, #10131e 0%, #1a1e2c 100%);
-            box-shadow: 0 18px 35px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(212,175,55,0.2);
+        /* প্ল্যাটফর্ম স্পেসিফিক হোভার */
+        .fb-shine:hover { box-shadow: 0 0 20px #1877F2; color: #1877F2 !important; border-color: #1877F2 !important; }
+        .ig-shine:hover { box-shadow: 0 0 20px #E4405F; color: #E4405F !important; border-color: #E4405F !important; }
+        .yt-shine:hover { box-shadow: 0 0 20px #FF0000; color: #FF0000 !important; border-color: #FF0000 !important; }
+        .pin-shine:hover { box-shadow: 0 0 20px #E60023; color: #E60023 !important; border-color: #E60023 !important; }
+        .wa-shine:hover { box-shadow: 0 0 20px #25D366; color: #25D366 !important; border-color: #25D366 !important; }
+        
+        /* সোশ্যাল বার */
+        .social-bar-container {
+            background: linear-gradient(135deg, rgba(13,15,24,0.8), rgba(13,15,24,0.95));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212,175,55,0.3);
+            transition: all 0.4s ease;
         }
         
-        .social-ring {
-            transition: all 0.25s ease;
+        .social-bar-container:hover {
+            border-color: rgba(212,175,55,0.8);
+            box-shadow: 0 0 30px rgba(212,175,55,0.2);
         }
         
-        .social-ring:hover {
-            background: #D4AF37;
-            color: #090A0F;
-            transform: scale(1.08);
-            border-color: #D4AF37;
-        }
+        .card-hover { transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 35px -12px rgba(212, 175, 55, 0.28); border-color: #D4AF37 !important; }
+        
+        .product-img { transition: transform 0.65s ease-out; }
+        .card-hover:hover .product-img { transform: scale(1.08); }
         
         .floating-particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             background: #D4AF37;
             border-radius: 50%;
-            opacity: 0.5;
+            opacity: 0.6;
             pointer-events: none;
+            box-shadow: 0 0 5px #D4AF37;
         }
-        
-        /* আলোক রশ্মি এলিমেন্ট */
-        .light-ray {
-            position: absolute;
-            width: 150%;
-            height: 80px;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.15), rgba(212,175,55,0.4), rgba(212,175,55,0.15), transparent);
-            transform: rotate(-25deg);
-            pointer-events: none;
-            animation: lightRay 6s ease-in-out infinite;
-        }
-        
-        .light-ray:nth-child(1) { top: 20%; left: -50%; animation-delay: 0s; width: 180%; height: 60px; }
-        .light-ray:nth-child(2) { top: 45%; left: -30%; animation-delay: 2s; width: 160%; height: 45px; }
-        .light-ray:nth-child(3) { top: 70%; left: -60%; animation-delay: 4s; width: 200%; height: 70px; }
-        
-        .glow-orb {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 50%, transparent 70%);
-            animation: floatingGlow 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        .glow-orb:nth-child(1) { top: 10%; left: -5%; width: 300px; height: 300px; animation-delay: 0s; }
-        .glow-orb:nth-child(2) { bottom: 20%; right: -10%; width: 400px; height: 400px; animation-delay: 3s; }
-        .glow-orb:nth-child(3) { top: 50%; left: 30%; width: 200px; height: 200px; animation-delay: 6s; }
         
         @keyframes particleDrift {
             0% { transform: translateY(0) translateX(0); opacity: 0; }
-            20% { opacity: 0.7; }
+            20% { opacity: 0.8; }
             80% { opacity: 0.5; }
-            100% { transform: translateY(-140px) translateX(45px); opacity: 0; }
-        }
-        
-        .bengali-text { font-family: 'Noto Serif Bengali', serif; }
-        .english-text { font-family: system-ui, -apple-system, sans-serif; }
-        
-        /* মডাল এনিমেশন */
-        .modal-open {
-            animation: modalFadeIn 0.3s ease-out forwards;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            100% { transform: translateY(-150px) translateX(60px); opacity: 0; }
         }
     </style>
 </head>
@@ -172,274 +286,259 @@
         <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center shadow-md">
-     <img src="images/monogram.png" alt="Noor-E-Noksha Monogram" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-black font-bold text-2xl>images/monogram.png</span>'">
+                    <div class="w-11 h-11 rounded-full overflow-hidden bg-gradient-to-br from-[#E4C580] to-[#B48C2E] flex items-center justify-center shadow-md">
+                        <img src="images/monogram.png" alt="Noor-E-Noksha Monogram" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-black font-bold text-2xl>ন</span>'">
                     </div>
                     <div>
-                        <span class="text-[#F7EFD6] text-xl tracking-wide font-semibold bengali-text">নূর-ই-নকশা</span>
-                        <span class="text-[#D4AF37] text-xs block english-text">Noor-E-Noksha</span>
+                        <span class="text-[#F7EFD6] text-xl tracking-wide font-semibold">নূর-ই-নকশা</span>
+                        <span class="text-[#D4AF37] text-xs block">Noor-E-Noksha</span>
                     </div>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-9">
-                    <a href="#" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide english-text">Home</a>
-                    <a href="#collections" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide english-text">Collection</a>
-                    <a href="#wholesale" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide english-text">Wholesale</a>
-                    <a href="#media" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide english-text">Media</a>
-                    <a href="#contact" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide english-text">Contact</a>
+                    <a href="#" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide">Home</a>
+                    <a href="#collections" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide">Collection</a>
+                    <a href="#wholesale" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide">Wholesale</a>
+                    <a href="#media" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide">Media</a>
+                    <a href="#contact" class="text-[#F7EFD6] hover:text-[#D4AF37] transition font-medium text-sm uppercase tracking-wide">Contact</a>
                 </div>
                 
-                <a href="https://wa.me/8801717902201" target="_blank" class="hidden md:flex items-center gap-2 bg-[#D4AF37] text-black px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-[#C59B2E] transition hover:shadow-[0_0_18px_rgba(212,175,55,0.6)]">
-                    <i class="fab fa-whatsapp text-lg"></i> <span class="english-text">WhatsApp Order</span>
+                <a href="https://wa.me/8801717902201" target="_blank" class="hidden md:flex items-center gap-2 bg-[#D4AF37] text-black px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-[#C59B2E] transition wa-shine">
+                    <i class="fab fa-whatsapp text-lg"></i> <span>WhatsApp Order</span>
                 </a>
                 
                 <button id="menuBtn" class="md:hidden text-[#F7EFD6] text-2xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         
-        <div id="mobileMenu" class="hidden md:hidden bg-[#0B0E16] border-t border-[#D4AF37]/40 backdrop-blur-md">
+        <div id="mobileMenu" class="hidden md:hidden bg-[#0B0E16] border-t border-[#D4AF37]/40">
             <div class="px-6 py-5 space-y-4">
-                <a href="#" class="block text-[#F7EFD6] py-2 border-b border-[#D4AF37]/20 english-text">Home</a>
-                <a href="#collections" class="block text-[#F7EFD6] py-2 border-b border-[#D4AF37]/20 bengali-text">কালেকশন</a>
-                <a href="#wholesale" class="block text-[#F7EFD6] py-2 border-b border-[#D4AF37]/20 english-text">Wholesale</a>
-                <a href="#media" class="block text-[#F7EFD6] py-2 border-b border-[#D4AF37]/20 english-text">Media</a>
-                <a href="#contact" class="block text-[#F7EFD6] py-2 english-text">Contact</a>
-                <a href="https://wa.me/8801717902201" target="_blank" class="flex items-center justify-center gap-2 bg-[#D4AF37] text-black px-4 py-3 rounded-full font-bold w-full mt-3"><i class="fab fa-whatsapp text-xl"></i> <span class="english-text">Order on WhatsApp</span></a>
+                <a href="#" class="block text-[#F7EFD6] py-2">Home</a>
+                <a href="#collections" class="block text-[#F7EFD6] py-2">Collection</a>
+                <a href="#wholesale" class="block text-[#F7EFD6] py-2">Wholesale</a>
+                <a href="#media" class="block text-[#F7EFD6] py-2">Media</a>
+                <a href="#contact" class="block text-[#F7EFD6] py-2">Contact</a>
+                <a href="https://wa.me/8801717902201" target="_blank" class="flex items-center justify-center gap-2 bg-[#D4AF37] text-black px-4 py-3 rounded-full font-bold w-full mt-3"><i class="fab fa-whatsapp text-xl"></i> Order on WhatsApp</a>
             </div>
         </div>
     </nav>
     
-    <!-- Hero Section with Light Rays Effect -->
+    <!-- Hero Section - উজ্জ্বল লাইট রে সহ -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <img src="images/hero-bg.jpg" alt="Noor-E-Noksha Hero Background" class="w-full h-full object-cover" onerror="this.parentElement.style.background='radial-gradient(ellipse at center, #1a1f2e 0%, #090A0F 100%)'">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#090A0F]/70 via-[#090A0F]/50 to-[#D4AF37]/15"></div>
-            
-            <!-- নতুন আলোক রশ্মি এলিমেন্ট -->
-            <div class="light-ray"></div>
-            <div class="light-ray"></div>
-            <div class="light-ray"></div>
-            <div class="glow-orb"></div>
-            <div class="glow-orb"></div>
-            <div class="glow-orb"></div>
+            <img src="images/hero-bg.jpg" alt="Hero Background" class="w-full h-full object-cover" onerror="this.parentElement.style.background='radial-gradient(ellipse at center, #1a1f2e 0%, #090A0F 100%)'">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#090A0F]/80 via-[#090A0F]/60 to-[#D4AF37]/20"></div>
         </div>
         
-        <div class="absolute inset-0 overflow-hidden pointer-events-none" id="particlesHero"></div>
+        <!-- 🌟 উজ্জ্বল লাইট রে ইফেক্টসমূহ 🌟 -->
+        <div class="hero-light-ray"></div>
+        <div class="rotating-light-ray"></div>
+        <div class="spotlight"></div>
+        
+        <div id="particlesHero" class="absolute inset-0 pointer-events-none"></div>
         
         <div class="relative z-20 max-w-7xl mx-auto px-6 text-center">
             <div class="fade-up">
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                    <span class="bg-gradient-to-r from-[#E4C580] via-[#F9EEC1] to-[#D4AF37] bg-clip-text text-transparent gold-glow bengali-text">নূর-ই-নকশা</span>
+                    <span class="bg-gradient-to-r from-[#E4C580] via-[#F9EEC1] to-[#D4AF37] bg-clip-text text-transparent gold-glow">নূর-ই-নকশা</span>
                 </h1>
-                <p class="text-[#D4AF37] text-base md:text-xl tracking-[.25em] mt-2 mb-5 font-light english-text">LUXURY LIGHTING ATELIER</p>
-                <p class="text-[#F4E8D8] text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-7 font-light bengali-text">
+                <p class="text-[#D4AF37] text-base md:text-xl tracking-[.25em] mt-2 mb-5">LUXURY LIGHTING ATELIER</p>
+                <p class="text-[#F4E8D8] text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-7">
                     আলো ও নকশার নির্যাস — আভিজাত্যের প্রতীক, প্রতিটি সৃষ্টিতে অনন্য গল্প।
                 </p>
-                <p class="text-[#F4E8D8] text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-7 font-light english-text">
-                    The essence of light and design — a symbol of elegance, a unique story in every creation.
-                </p>
                 <div class="flex flex-wrap justify-center gap-6 mt-2">
-                    <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center gap-3 bg-[#D4AF37] text-black px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-[0_0_28px_rgba(212,175,55,0.7)] transition-all duration-300">
-                        <i class="fab fa-whatsapp text-2xl"></i> <span class="english-text">Order Now</span> <span class="bengali-text">| অর্ডার করুন</span>
+                    <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center gap-3 bg-[#D4AF37] text-black px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-[0_0_28px_rgba(212,175,55,0.7)] transition-all">
+                        <i class="fab fa-whatsapp text-2xl"></i> <span>Order Now | অর্ডার করুন</span>
                     </a>
                 </div>
                 <div class="mt-10 inline-flex items-center gap-2 bg-black/20 backdrop-blur-sm border border-[#D4AF37]/50 rounded-full px-5 py-2">
-                    <i class="fas fa-truck-fast text-[#D4AF37]"></i><span class="text-[#F4E8D8] text-sm english-text">Nationwide Delivery | Wholesale Price</span>
+                    <i class="fas fa-truck-fast text-[#D4AF37]"></i><span class="text-[#F4E8D8] text-sm">Nationwide Delivery | Wholesale Price</span>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Featured Collections -->
-    <section id="collections" class="py-24 bg-[#090A0F]">
+    <!-- Featured Collections - প্রতিটি কার্ডে লাইট রে সহ -->
+    <section id="collections" class="py-24 bg-[#090A0F] relative">
+        <div class="ambient-glow"></div>
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-14">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#F7EFD6]"><span class="bengali-text">আমাদের </span><span class="text-[#D4AF37] bengali-text">সংগ্রহ</span><span class="english-text text-white"> | Signature Collection</span></h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[#F7EFD6]">আমাদের <span class="text-[#D4AF37]">সংগ্রহ</span></h2>
                 <div class="w-28 h-[2px] bg-[#D4AF37] mx-auto my-4"></div>
-                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto bengali-text">প্রতিটি ল্যাম্প অত্যন্ত যত্নে তৈরি, ক্যালিগ্রাফি ও মোটিফের মিলনে অনন্য</p>
-                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto english-text text-sm">Each lamp is meticulously crafted, unique in the fusion of calligraphy and motifs</p>
+                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto">প্রতিটি ল্যাম্প অত্যন্ত যত্নে তৈরি, ক্যালিগ্রাফি ও মোটিফের মিলনে অনন্য</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Product 1 - নূর আল্লাহ -->
-                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                <!-- প্রোডাক্ট ১ -->
+                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden relative">
+                    <div class="card-light-ray"></div>
                     <div class="relative overflow-hidden h-72 bg-gradient-to-br from-[#D4AF37]/20 to-[#0C0E16]">
-                        <img src="images/product1.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/800x1000/1e2335/D4AF37?text=Noor+Allah'">
-                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold border border-[#D4AF37]/50 english-text">Premium Series</div>
+                        <img src="images/product1.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/1e2335/D4AF37?text=Allah+Lamp'">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold">Premium Series</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2 bengali-text">নূর আল্লাহ</h3>
-                        <h3 class="text-md font-semibold text-[#D4AF37] mb-2 english-text">Noor Allah</h3>
-                        <p class="text-[#C9C6B5]/80 text-sm leading-relaxed bengali-text">অক্ষরের কাব্যিক বিন্যাসে তৈরি ডিভাইন লাইট বক্স — আত্মার আলোয় ঘর আলোকিত করে।</p>
-                        <p class="text-[#C9C6B5]/80 text-xs leading-relaxed english-text mt-1">Divine light box crafted in poetic calligraphy — illuminates your home with spiritual radiance.</p>
-                        <div class="mt-5 flex justify-between items-center">
-                            <span class="text-[#D4AF37] text-sm font-semibold english-text"><i class="fas fa-tag"></i> Limited Edition</span>
-                            <button class="detail-btn border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition bengali-text" data-product="noorAllah">বিস্তারিত →</button>
-                        </div>
+                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2">নূর আল্লাহ</h3>
+                        <p class="text-[#C9C6B5]/80 text-sm">অক্ষরের কাব্যিক বিন্যাসে তৈরি ডিভাইন লাইট বক্স — আত্মার আলোয় ঘর আলোকিত করে।</p>
+                        <button class="mt-5 border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition">বিস্তারিত →</button>
                     </div>
                 </div>
-                <!-- Product 2 - আল-মুহাম্মদ -->
-                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                
+                <!-- প্রোডাক্ট ২ -->
+                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden relative">
+                    <div class="card-light-ray"></div>
                     <div class="relative overflow-hidden h-72 bg-gradient-to-br from-[#D4AF37]/20 to-[#0C0E16]">
-                        <img src="images/product2.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/800x1000/1e2335/D4AF37?text=Al-Muhammad'">
-                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold english-text">Bestseller</div>
+                        <img src="images/product2.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/1e2335/D4AF37?text=Muhammad+Lamp'">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold">Bestseller</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2 bengali-text">আল-মুহাম্মদ</h3>
-                        <h3 class="text-md font-semibold text-[#D4AF37] mb-2 english-text">Al-Muhammad</h3>
-                        <p class="text-[#C9C6B5]/80 text-sm leading-relaxed bengali-text">রৌপ্য ও সোনালি রেখায় ফুটিয়ে তোলা নবীজির নাম (সা.), শ্রদ্ধা ও আভিজাত্যের প্রতীক।</p>
-                        <p class="text-[#C9C6B5]/80 text-xs leading-relaxed english-text mt-1">The Prophet's name (PBUH) embossed in silver & gold — a symbol of reverence & elegance.</p>
-                        <div class="mt-5 flex justify-between items-center">
-                            <span class="text-[#D4AF37] text-sm english-text"><i class="fas fa-star"></i> Handcrafted</span>
-                            <button class="detail-btn border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition bengali-text" data-product="alMuhammad">বিস্তারিত →</button>
-                        </div>
+                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2">আল-মুহাম্মদ</h3>
+                        <p class="text-[#C9C6B5]/80 text-sm">রৌপ্য ও সোনালি রেখায় ফুটিয়ে তোলা নবীজির নাম (সা.), শ্রদ্ধা ও আভিজাত্যের প্রতীক।</p>
+                        <button class="mt-5 border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition">বিস্তারিত →</button>
                     </div>
                 </div>
-                <!-- Product 3 - ঐতিহ্য প্রদীপ -->
-                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden">
+                
+                <!-- প্রোডাক্ট ৩ -->
+                <div class="card-hover bg-[#141824] border border-[#D4AF37]/30 rounded-2xl overflow-hidden relative">
+                    <div class="card-light-ray"></div>
                     <div class="relative overflow-hidden h-72 bg-gradient-to-br from-[#D4AF37]/20 to-[#0C0E16]">
-                        <img src="images/product3.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/800x1000/1e2335/D4AF37?text=Heritage+Lamp'">
-                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold english-text">Heritage Collection</div>
+                        <img src="images/product3.jpg" class="product-img w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/1e2335/D4AF37?text=Heritage+Series'">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-3 py-1 rounded-full text-xs font-bold">Heritage</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2 bengali-text">ঐতিহ্য প্রদীপ</h3>
-                        <h3 class="text-md font-semibold text-[#D4AF37] mb-2 english-text">Heritage Lamp</h3>
-                        <p class="text-[#C9C6B5]/80 text-sm leading-relaxed bengali-text">বাংলার মৃৎশিল্পের মোটিফ ও আধুনিক LED প্রযুক্তির অপূর্ব মিশ্রণ।</p>
-                        <p class="text-[#C9C6B5]/80 text-xs leading-relaxed english-text mt-1">A beautiful fusion of Bengal's pottery motifs and modern LED technology.</p>
-                        <div class="mt-5 flex justify-between items-center">
-                            <span class="text-[#D4AF37] text-sm english-text"><i class="fas fa-palette"></i> Custom Color</span>
-                            <button class="detail-btn border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition bengali-text" data-product="heritage">বিস্তারিত →</button>
-                        </div>
+                        <h3 class="text-2xl font-bold text-[#F7EFD6] mb-2">ঐতিহ্য প্রদীপ</h3>
+                        <p class="text-[#C9C6B5]/80 text-sm">বাংলার মৃৎশিল্পের মোটিফ ও আধুনিক LED প্রযুক্তির অপূর্ব মিশ্রণ।</p>
+                        <button class="mt-5 border border-[#D4AF37] text-[#D4AF37] px-5 py-1.5 rounded-full text-sm hover:bg-[#D4AF37] hover:text-black transition">বিস্তারিত →</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Wholesale & Order Box Section -->
+    <!-- Wholesale & Quick Order Box -->
     <section id="wholesale" class="py-20 bg-[#0F121C]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="order-glow-box rounded-2xl border border-[#D4AF37]/40 p-8 backdrop-blur-sm">
-                    <div class="flex items-center gap-2 mb-4"><i class="fas fa-crown text-[#D4AF37] text-xl"></i><span class="text-[#D4AF37] text-sm font-semibold tracking-wider english-text">Premium Consultation</span></div>
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#F7EFD6] mb-4 bengali-text">পাইকারি ও কাস্টম অর্ডার</h3>
-                    <h3 class="text-xl font-bold text-[#D4AF37] mb-4 english-text">Wholesale & Custom Orders</h3>
-                    <p class="text-[#C9C6B5] mb-6 leading-relaxed bengali-text">আমরা হোটেল, রেস্টুরেন্ট, ব্যাংক এবং ব্যক্তিগত সংগ্রহশালার জন্য বাল্ক অর্ডার ও কাস্টমাইজড লাইটিং সলিউশন সরবরাহ করি।</p>
-                    <p class="text-[#C9C6B5] mb-6 leading-relaxed english-text text-sm">We supply bulk orders & customized lighting solutions for hotels, restaurants, banks, and private collections.</p>
+                <div class="rounded-2xl border border-[#D4AF37]/40 p-8 relative overflow-hidden" style="background: linear-gradient(135deg, #10131e 0%, #1a1e2c 100%);">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/10 to-transparent"></div>
+                    <div class="hero-light-ray" style="opacity: 0.15;"></div>
+                    <div class="flex items-center gap-2 mb-4"><i class="fas fa-crown text-[#D4AF37] text-xl"></i><span class="text-[#D4AF37] text-sm font-semibold tracking-wider">Premium Consultation</span></div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-[#F7EFD6] mb-4">পাইকারি ও কাস্টম অর্ডার</h3>
+                    <p class="text-[#C9C6B5] mb-6 leading-relaxed">আমরা হোটেল, রেস্টুরেন্ট, ব্যাংক এবং ব্যক্তিগত সংগ্রহশালার জন্য বাল্ক অর্ডার ও কাস্টমাইজড লাইটিং সলিউশন সরবরাহ করি।</p>
                     <ul class="space-y-3 mb-8">
-                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> <span class="english-text">Nationwide Delivery</span> <span class="bengali-text">| দেশব্যাপী ডেলিভারি</span></li>
-                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> <span class="english-text">Wholesale Discount + Design Support</span></li>
-                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> <span class="english-text">Free Consultation & Custom Project Plan</span></li>
+                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> দেশব্যাপী ডেলিভারি</li>
+                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> পাইকারি অর্ডারে বিশেষ ছাড় ও নকশা সহায়তা</li>
+                        <li class="flex items-center gap-2 text-[#E4D5B6]"><i class="fas fa-check-circle text-[#D4AF37]"></i> ফ্রি কনসালটেশন ও ব্যক্তিগতকৃত প্রজেক্ট প্ল্যান</li>
                     </ul>
-                    <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center gap-3 bg-[#D4AF37] text-black font-bold py-3 px-7 rounded-full shadow-md hover:bg-[#B88E2C] transition-all"><i class="fab fa-whatsapp text-xl"></i> <span class="english-text">Order via WhatsApp</span></a>
+                    <a href="https://wa.me/8801717902201" target="_blank" class="inline-flex items-center gap-3 bg-[#D4AF37] text-black font-bold py-3 px-7 rounded-full shadow-md hover:bg-[#B88E2C] transition-all"><i class="fab fa-whatsapp text-xl"></i> Order via WhatsApp</a>
                 </div>
+                
                 <div class="bg-gradient-to-br from-[#10131F] to-[#191E2D] p-8 rounded-2xl border border-[#D4AF37]/30">
-                    <h4 class="text-2xl font-bold text-[#F7EFD6] mb-3"><i class="fas fa-box-open text-[#D4AF37] mr-2"></i><span class="english-text">Quick Order Box</span></h4>
-                    <p class="text-[#C9C6B5] text-sm mb-5 english-text">Tell us your preferred product or custom design, we will contact you within 24 hours.</p>
+                    <h4 class="text-2xl font-bold text-[#F7EFD6] mb-3"><i class="fas fa-box-open text-[#D4AF37] mr-2"></i> Quick Order Box</h4>
+                    <p class="text-[#C9C6B5] text-sm mb-5">Tell us your preferred product or custom design, we will contact you within 24 hours.</p>
                     <div class="space-y-4">
-                        <input type="text" placeholder="Your Name / আপনার নাম" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52] focus:outline-none focus:border-[#D4AF37]">
-                        <input type="text" placeholder="WhatsApp Number / হোয়াটসঅ্যাপ নম্বর" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52]">
-                        <textarea rows="2" placeholder="Your Requirement / আপনার প্রয়োজনীয়তা" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52]"></textarea>
-                        <button class="w-full bg-[#D4AF37] text-black font-bold py-3 rounded-xl hover:bg-[#C89F2E] transition flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> <span class="english-text">Send Order on WhatsApp</span></button>
+                        <input type="text" id="orderName" placeholder="Your Name / আপনার নাম" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52] focus:outline-none focus:border-[#D4AF37]">
+                        <input type="text" id="orderPhone" placeholder="WhatsApp Number / হোয়াটসঅ্যাপ নম্বর" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52]">
+                        <textarea id="orderDetails" rows="2" placeholder="Your Requirement / আপনার প্রয়োজনীয়তা" class="w-full bg-[#0B0E16] border border-[#D4AF37]/40 rounded-xl px-4 py-3 text-[#F7EFD6] placeholder:text-[#7A6F52]"></textarea>
+                        <button id="quickOrderBtn" class="w-full bg-[#D4AF37] text-black font-bold py-3 rounded-xl hover:bg-[#C89F2E] transition flex items-center justify-center gap-2 btn-pulse"><i class="fab fa-whatsapp"></i> Send Order on WhatsApp</button>
                     </div>
+                    <p class="text-[#7A6F52] text-xs text-center mt-4">We respect your privacy</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Media Section: YouTube + Pinterest + Instagram + Facebook -->
+    <!-- Media Section: অ্যানিমেটেড সোশ্যাল আইকন সহ -->
     <section id="media" class="py-24 bg-gradient-to-b from-[#090A0F] to-[#0F111A] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#F7EFD6]"><span class="bengali-text">মিডিয়া ও </span><span class="text-[#D4AF37] english-text">Social World</span></h2>
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#F7EFD6]">মিডিয়া ও <span class="text-[#D4AF37]">Social World</span></h2>
                 <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto my-5"></div>
-                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto text-lg bengali-text">আমাদের সাথে যুক্ত হন | সৌন্দর্য ও আলোর জগতে পা রাখুন</p>
-                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto text-sm english-text">Join us | Step into the world of beauty & light</p>
+                <p class="text-[#C9C6B5]/80 max-w-2xl mx-auto">আমাদের সাথে যুক্ত হন | সৌন্দর্য ও আলোর জগতে পা রাখুন</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 items-stretch">
                 <!-- YouTube Card -->
-                <div class="group relative bg-[#141824] rounded-2xl border border-[#D4AF37]/30 overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.3)] hover:border-[#D4AF37]/70">
+                <div class="group relative bg-[#141824] rounded-2xl border border-[#D4AF37]/30 overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.3)]">
                     <div class="relative overflow-hidden aspect-video bg-black/50">
                         <img src="images/hero-bg.jpg" alt="YouTube Channel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" onerror="this.src='https://placehold.co/1280x720/1a1f2e/D4AF37?text=Noor-E-Noksha'">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-[#090A0F]/40 to-transparent"></div>
                         <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                            <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="w-20 h-20 rounded-full bg-[#D4AF37]/10 backdrop-blur-md flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] hover:scale-110 transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">
+                            <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="w-20 h-20 rounded-full bg-[#D4AF37]/10 backdrop-blur-md flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] hover:scale-110 transition-all duration-300 hover:bg-[#D4AF37] hover:text-black yt-shine">
                                 <i class="fab fa-youtube text-4xl"></i>
                             </a>
-                            <span class="text-[#F7EFD6] font-bold tracking-wider bg-black/50 px-4 py-1 rounded-full text-sm backdrop-blur-sm english-text">Subscribe Now | Official Channel</span>
+                            <span class="text-[#F7EFD6] font-bold tracking-wider bg-black/50 px-4 py-1 rounded-full text-sm backdrop-blur-sm">Coming Soon | Official Channel</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold text-[#F7EFD6] flex items-center gap-2"><i class="fab fa-youtube text-[#D4AF37]"></i> <span class="english-text">YouTube Channel</span></h3>
-                            <a href="https://www.youtube.com/@Noor-E-Noksha?sub_confirmation=1" target="_blank" class="text-[#D4AF37] text-xs english-text hover:underline">Subscribe →</a>
-                        </div>
-                        <p class="text-[#C9C6B5] text-sm leading-relaxed mb-4 english-text">Lighting installations, artisan processes, design inspiration — coming soon in stunning visuals.</p>
-                        <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="inline-flex items-center gap-2 bg-red-600/20 text-red-500 border border-red-500/50 rounded-full px-4 py-1.5 text-sm hover:bg-red-600 hover:text-white transition-all"><i class="fab fa-youtube"></i> Visit Channel →</a>
+                        <h3 class="text-xl font-bold text-[#F7EFD6] flex items-center gap-2"><i class="fab fa-youtube text-[#D4AF37]"></i> YouTube Channel</h3>
+                        <p class="text-[#C9C6B5] text-sm mt-2">Lighting installations, artisan processes, design inspiration — coming soon in stunning visuals.</p>
+                        <a href="https://www.youtube.com/@Noor-E-Noksha?sub_confirmation=1" target="_blank" class="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/50 rounded-full px-4 py-1.5 text-sm hover:bg-[#D4AF37] hover:text-black transition-all mt-3 btn-pulse">Subscribe Now →</a>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Pinterest Card -->
-                    <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-lg">
+                    <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-xl">
                         <div class="flex items-center justify-between mb-3">
-                            <i class="fab fa-pinterest text-3xl text-[#E60023]"></i>
-                            <span class="text-[#D4AF37] text-xs bg-[#D4AF37]/10 px-2 py-0.5 rounded-full english-text">Inspiration Board</span>
+                            <i class="fab fa-pinterest text-3xl text-[#E60023] pin-shine transition-all"></i>
+                            <span class="text-[#D4AF37] text-xs bg-[#D4AF37]/10 px-2 py-0.5 rounded-full">Inspiration</span>
                         </div>
-                        <h4 class="text-lg font-bold text-[#F7EFD6] mb-1 english-text">Pinterest Ideas</h4>
-                        <p class="text-[#C9C6B5] text-xs mb-4 english-text">Curated interior & lighting aesthetics</p>
+                        <h4 class="text-lg font-bold text-[#F7EFD6] mb-1">Pinterest Ideas</h4>
+                        <p class="text-[#C9C6B5] text-xs mb-4">Curated interior & lighting aesthetics</p>
                         <div class="grid grid-cols-3 gap-1.5 mb-4 rounded-lg overflow-hidden">
-                            <img src="images/product1.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Allah'">
-                            <img src="images/product2.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Muhammad'">
-                            <img src="images/product3.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Heritage'">
+                            <img src="images/product1.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Allah'">
+                            <img src="images/product2.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Muhammad'">
+                            <img src="images/product3.jpg" class="aspect-square w-full object-cover border border-[#D4AF37]/30 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400/1e2335/D4AF37?text=Heritage'">
                         </div>
-                        <a href="https://www.pinterest.com/NoorENoksha/" target="_blank" class="flex items-center justify-center gap-2 w-full border border-[#D4AF37]/40 rounded-full py-2 text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-black transition-all"><i class="fab fa-pinterest"></i> Explore Pinterest →</a>
+                        <a href="https://www.pinterest.com/NoorENoksha/" target="_blank" class="flex items-center justify-center gap-2 w-full border border-[#D4AF37]/40 rounded-full py-2 text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-black transition-all btn-pulse">Explore Pinterest →</a>
                     </div>
 
-                    <!-- Instagram + Facebook Combo -->
                     <div class="flex flex-col gap-6">
-                        <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37]">
+                        <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-xl">
                             <div class="flex items-center gap-3 mb-2">
-                                <i class="fab fa-instagram text-2xl text-[#D4AF37]"></i>
-                                <span class="text-[#F7EFD6] font-semibold english-text">@noorenoksha</span>
-                                <span class="text-xs text-[#C9C6B5]/60 ml-auto english-text">Visual Diary</span>
+                                <i class="fab fa-instagram text-2xl text-[#D4AF37] ig-shine transition-all"></i>
+                                <span class="text-[#F7EFD6] font-semibold">@noorenoksha</span>
                             </div>
-                            <p class="text-[#C9C6B5] text-sm mb-3 english-text">Daily updates — new arrivals, behind the scenes, luxury home aesthetics.</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex -space-x-2">
-                                    <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#C59B2E] border border-black flex items-center justify-center text-[10px]">✨</div>
-                                    <div class="w-7 h-7 rounded-full bg-[#2A2E42] border border-black flex items-center justify-center text-[10px]">📸</div>
-                                </div>
-                                <a href="https://www.instagram.com/noorenoksha" target="_blank" class="text-[#D4AF37] text-sm hover:underline flex items-center gap-1">Follow <i class="fas fa-external-link-alt text-[10px]"></i></a>
-                            </div>
+                            <p class="text-[#C9C6B5] text-sm mb-3">Daily updates — new arrivals, behind the scenes, luxury home aesthetics.</p>
+                            <a href="https://www.instagram.com/noorenoksha" target="_blank" class="text-[#D4AF37] text-sm hover:underline flex items-center gap-1 btn-pulse">Follow on Instagram →</a>
                         </div>
-                        <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37]">
+                        
+                        <div class="bg-[#141824] rounded-2xl border border-[#D4AF37]/30 p-5 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-xl">
                             <div class="flex items-center gap-3 mb-2">
-                                <i class="fab fa-facebook-square text-2xl text-[#D4AF37]"></i>
-                                <span class="text-[#F7EFD6] font-semibold english-text">Facebook Page</span>
-                                <span class="text-[#D4AF37] text-xs bg-[#D4AF37]/10 px-1.5 py-0.5 rounded-full english-text">Events/Offers</span>
+                                <i class="fab fa-facebook-square text-2xl text-[#D4AF37] fb-shine transition-all"></i>
+                                <span class="text-[#F7EFD6] font-semibold">Facebook Page</span>
                             </div>
-                            <p class="text-[#C9C6B5] text-sm mb-3 english-text">Exclusive collections, exhibitions & special discounts.</p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-[#D4AF37] text-xs flex items-center gap-1"><i class="fas fa-thumbs-up"></i> Like & Follow</div>
-                                <a href="https://www.facebook.com/share/1DvjU4tFWm/" target="_blank" class="text-[#D4AF37] border border-[#D4AF37]/40 px-4 py-1.5 rounded-full text-xs hover:bg-[#D4AF37] hover:text-black transition-all">Visit Page →</a>
+                            <p class="text-[#C9C6B5] text-sm mb-3">Exclusive collections, exhibitions & special discounts.</p>
+                            <a href="https://www.facebook.com/share/1DvjU4tFWm/" target="_blank" class="text-[#D4AF37] text-sm hover:underline flex items-center gap-1 btn-pulse">Visit Page →</a>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-black via-[#1a1a2e] to-black rounded-2xl border border-[#20D5EC]/40 p-5 transition-all duration-300 hover:border-[#EE1D52] hover:shadow-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#20D5EC] to-[#EE1D52] flex items-center justify-center animate-pulse">
+                                    <i class="fab fa-tiktok text-white text-sm"></i>
+                                </div>
+                                <span class="text-[#F7EFD6] font-semibold">@noorenoksha0</span>
+                                <span class="text-[#20D5EC] text-xs bg-black/50 px-2 py-0.5 rounded-full animate-bounce">Follow</span>
                             </div>
+                            <p class="text-[#C9C6B5] text-sm mb-3">Short videos — lighting transformations, product highlights, design tips & trends.</p>
+                            <a href="https://www.tiktok.com/@noorenoksha0?is_from_webapp=1&sender_device=pc" target="_blank" class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#20D5EC] to-[#EE1D52] rounded-full py-2 text-white text-sm font-semibold hover:opacity-90 transition-all btn-pulse tiktok-glow">Follow on TikTok →</a>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Social Follow Bar -->
-            <div class="mt-20 text-center bg-[#0D0F18]/60 backdrop-blur-sm rounded-2xl p-6 border border-[#D4AF37]/20">
-                <p class="text-[#D4AF37] tracking-widest text-sm uppercase mb-3 english-text">Join The Luxe Circle</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="social-ring w-11 h-11 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"><i class="fab fa-youtube text-xl"></i></a>
-                    <a href="https://www.pinterest.com/NoorENoksha/" target="_blank" class="social-ring w-11 h-11 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"><i class="fab fa-pinterest text-xl"></i></a>
-                    <a href="https://www.instagram.com/noorenoksha" target="_blank" class="social-ring w-11 h-11 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="https://www.facebook.com/share/1DvjU4tFWm/" target="_blank" class="social-ring w-11 h-11 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
-                    <a href="https://wa.me/8801717902201" target="_blank" class="social-ring w-11 h-11 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
+            <div class="mt-20 text-center social-bar-container rounded-2xl p-6 transition-all duration-500">
+                <p class="text-[#D4AF37] tracking-widest text-sm uppercase mb-3 animate-pulse">Join The Luxe Circle</p>
+                <div class="flex flex-wrap justify-center gap-5">
+                    <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all duration-300 hover:scale-125 hover:rotate-12"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="https://www.pinterest.com/NoorENoksha/" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#E60023] hover:text-white hover:border-[#E60023] transition-all duration-300 hover:scale-125 hover:-rotate-12"><i class="fab fa-pinterest text-xl"></i></a>
+                    <a href="https://www.instagram.com/noorenoksha" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-gradient-to-tr hover:from-[#FCAF45] hover:to-[#E4405F] hover:text-white hover:border-transparent transition-all duration-300 hover:scale-125 hover:rotate-6"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://www.facebook.com/share/1DvjU4tFWm/" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300 hover:scale-125 hover:-rotate-12"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="https://www.tiktok.com/@noorenoksha0?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#20D5EC]/50 flex items-center justify-center text-[#20D5EC] hover:bg-gradient-to-tr hover:from-[#20D5EC] hover:to-[#EE1D52] hover:text-white hover:border-transparent transition-all duration-300 hover:scale-125 hover:rotate-12"><i class="fab fa-tiktok text-xl"></i></a>
+                    <a href="https://wa.me/8801717902201" target="_blank" class="social-icon-animate social-icon-dance w-12 h-12 rounded-full border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 hover:scale-125 hover:-rotate-6"><i class="fab fa-whatsapp text-xl"></i></a>
                 </div>
-                <p class="text-[#7A6F52] text-xs mt-4 english-text">Click to visit official accounts | Get latest art & design inspiration</p>
+                <p class="text-[#7A6F52] text-xs mt-5">🌟 Hover over any icon to see the magic animation | Click to connect</p>
             </div>
         </div>
     </section>
@@ -449,49 +548,46 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-10">
                 <div>
-                    <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B4872A] flex items-center justify-center"><span class="font-bold text-black">Monogram.png</span></div><div><span class="text-[#F7EFD6] text-lg bengali-text">নূর-ই-নকশা</span><span class="text-[#D4AF37] text-xs block english-text">Noor-E-Noksha</span></div></div>
-                    <p class="text-[#AFA98D] text-sm bengali-text">হাতেকলমে তৈরী বিলাসবহুল আলোক সজ্জা, যেখানে নকশার প্রতিটি বিন্দু আভিজাত্যের স্বাক্ষর।</p>
-                    <p class="text-[#AFA98D] text-xs english-text mt-1">Handcrafted luxury lighting where every design detail reflects elegance.</p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B4872A] flex items-center justify-center"><span class="font-bold text-black">নূ</span></div>
+                        <div><span class="text-[#F7EFD6] text-lg">নূর-ই-নকশা</span><span class="text-[#D4AF37] text-xs block">Noor-E-Noksha</span></div>
+                    </div>
+                    <p class="text-[#AFA98D] text-sm">হাতেকলমে তৈরী বিলাসবহুল আলোক সজ্জা, যেখানে নকশার প্রতিটি বিন্দু আভিজাত্যের স্বাক্ষর।</p>
                 </div>
                 <div>
-                    <h4 class="text-[#D4AF37] font-bold mb-4 english-text">Services</h4>
+                    <h4 class="text-[#D4AF37] font-bold mb-4">Services</h4>
                     <ul class="space-y-2 text-sm text-[#AFA98D]">
-                        <li><a href="#" class="hover:text-[#D4AF37] english-text">Wholesale Order</a></li>
-                        <li><a href="#" class="hover:text-[#D4AF37] english-text">Custom Design</a></li>
-                        <li><a href="#" class="hover:text-[#D4AF37] english-text">Customer Support</a></li>
-                        <li><a href="#" class="hover:text-[#D4AF37] english-text">Project Consultation</a></li>
+                        <li><a href="#" class="hover:text-[#D4AF37] transition">Wholesale Order</a></li>
+                        <li><a href="#" class="hover:text-[#D4AF37] transition">Custom Design</a></li>
+                        <li><a href="#" class="hover:text-[#D4AF37] transition">Customer Support</a></li>
+                        <li><a href="#" class="hover:text-[#D4AF37] transition">Project Consultation</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-[#D4AF37] font-bold mb-4 english-text">Contact</h4>
+                    <h4 class="text-[#D4AF37] font-bold mb-4">Contact</h4>
                     <div class="space-y-2 text-sm text-[#AFA98D]">
-                        <p><i class="fab fa-whatsapp text-[#D4AF37] w-5"></i> <a href="https://wa.me/8801717902201" class="hover:text-[#D4AF37]">+880 1717-902201</a></p>
+                        <p><i class="fab fa-whatsapp text-[#D4AF37] w-5"></i> <a href="https://wa.me/8801717902201" class="hover:text-[#D4AF37] transition">+880 1717-902201</a></p>
                         <p><i class="far fa-envelope text-[#D4AF37] w-5"></i> noorenoksha@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt text-[#D4AF37] w-5"></i> <span class="english-text">Dhaka, Bangladesh</span> <span class="bengali-text">|ঢাকা, বাংলাদেশ</span></p>
+                        <p><i class="fas fa-map-marker-alt text-[#D4AF37] w-5"></i> Jamalpur, Bangladesh | জামালপুর</p>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-[#D4AF37] font-bold mb-4 english-text">Social Network</h4>
-                    <div class="flex gap-4">
-                        <a href="https://www.facebook.com/share/1DvjU4tFWm/" target="_blank" class="social-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/noorenoksha" target="_blank" class="social-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.pinterest.com/NoorENoksha/" target="_blank" class="social-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.youtube.com/@Noor-E-Noksha" target="_blank" class="social-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition"><i class="fab fa-youtube"></i></a>
+                    <h4 class="text-[#D4AF37] font-bold mb-4">Social Network</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.facebook.com/share/1DvjU4tFWm/" class="social-icon-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300 hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/noorenoksha" class="social-icon-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-gradient-to-tr hover:from-[#FCAF45] hover:to-[#E4405F] hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.pinterest.com/NoorENoksha/" class="social-icon-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#E60023] hover:text-white hover:border-[#E60023] transition-all duration-300 hover:scale-110"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.youtube.com/@Noor-E-Noksha" class="social-icon-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all duration-300 hover:scale-110"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@noorenoksha0?is_from_webapp=1&sender_device=pc" class="social-icon-ring w-9 h-9 rounded-full border border-[#20D5EC]/50 flex items-center justify-center text-[#20D5EC] hover:bg-gradient-to-tr hover:from-[#20D5EC] hover:to-[#EE1D52] hover:text-white transition-all duration-300 hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/8801717902201" target="_blank" class="social-icon-ring w-9 h-9 rounded-full border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 hover:scale-110"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-[#D4AF37]/20 mt-12 pt-6 text-center text-[#7A6F52] text-xs">
-                <span class="english-text">© 2025 Noor-E-Noksha — Luxury Lighting & Decor | All Rights Reserved</span>
-                <span class="bengali-text block mt-1">© ২০২৫ নূর-ই-নকশা — আলো ও আভিজাত্যের ঠিকানা | সর্বস্বত্ব সংরক্ষিত</span>
+                © 2025 Noor-E-Noksha — Luxury Lighting & Decor | All Rights Reserved
             </div>
         </div>
     </footer>
-</div>
-
-<!-- Modal Container -->
-<div id="productModal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4 transition-all duration-300">
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modalOverlay"></div>
-    <div class="relative bg-gradient-to-br from-[#11141F] to-[#0A0D14] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#D4AF37]/40 shadow-2xl shadow-[#D4AF37]/10 transform transition-all duration-300 scale-95 opacity-0" id="modalContent"></div>
 </div>
 
 <script>
@@ -507,27 +603,25 @@
         else nav.classList.remove('bg-[#090A0F]/95');
     });
     
-    // Floating Particles for Hero
+    // Particles Effect
     function createParticles() {
         const container = document.getElementById('particlesHero');
         if(!container) return;
-        for(let i=0;i<45;i++){
+        for(let i=0;i<60;i++){
             let p = document.createElement('div');
             p.classList.add('floating-particle');
-            let size = Math.random() * 3 + 1;
-            p.style.width = size+'px';
-            p.style.height = size+'px';
+            p.style.width = (Math.random() * 4 + 1) + 'px';
+            p.style.height = p.style.width;
             p.style.left = Math.random() * 100 + '%';
             p.style.top = Math.random() * 100 + '%';
-            p.style.opacity = Math.random() * 0.5;
-            p.style.animation = `particleDrift ${5 + Math.random() * 7}s infinite linear`;
-            p.style.animationDelay = Math.random() * 6 + 's';
+            p.style.animation = `particleDrift ${6 + Math.random() * 8}s infinite linear`;
+            p.style.animationDelay = Math.random() * 7 + 's';
             container.appendChild(p);
         }
     }
     createParticles();
 
-    // Fade-up Animation Observer
+    // Fade-up Animation
     const faders = document.querySelectorAll('.fade-up');
     const obs = new IntersectionObserver((entries)=>{
         entries.forEach(e=>{
@@ -543,190 +637,39 @@
         el.style.transition='all 0.75s ease-out';
         obs.observe(el);
     });
-
-    // ============= পণ্যের বিস্তারিত মডাল =============
-    const modal = document.getElementById('productModal');
-    const modalContent = document.getElementById('modalContent');
-    let activeCloseBtn = null;
-    let activeCloseBtn2 = null;
-    let activeOverlay = null;
-
-    function closeModal() {
-        if(modalContent) {
-            modalContent.classList.remove('scale-100', 'opacity-100');
-            modalContent.classList.add('scale-95', 'opacity-0');
-        }
-        setTimeout(() => {
-            if(modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
+    
+    // Card Light Ray Mouse Move Effect
+    document.querySelectorAll('.card-hover').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            const lightRay = card.querySelector('.card-light-ray');
+            if(lightRay) {
+                lightRay.style.setProperty('--x', `${x}%`);
+                lightRay.style.setProperty('--y', `${y}%`);
             }
-            document.body.style.overflow = 'auto';
-        }, 300);
-    }
-
-    function updateModalContent(productId) {
-        let contentHtml = '';
-        
-        if(productId === 'noorAllah') {
-            contentHtml = `
-                <button id="closeModal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center justify-center text-xl">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
-                    <img src="images/product1.jpg" alt="নূর আল্লাহ" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/1e2335/D4AF37?text=Noor+Allah'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-transparent to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-4 py-1.5 rounded-full text-sm font-bold border border-[#D4AF37]/50">
-                        <i class="fas fa-certificate mr-1"></i> Premium Series
-                    </div>
-                </div>
-                <div class="p-6 md:p-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[#F7EFD6] mb-2 bengali-text">নূর আল্লাহ</h2>
-                    <h3 class="text-lg text-[#D4AF37] mb-4 english-text tracking-wide">Noor Allah — Divine Light Box</h3>
-                    <div class="w-20 h-[2px] bg-[#D4AF37]/60 mb-6"></div>
-                    <div class="space-y-5">
-                        <div class="flex gap-3 items-start"><i class="fas fa-hand-sparkles text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">পণ্যটি পিভিসি পাইপ</strong> দিয়ে দক্ষ কারিগর দ্বারা প্রস্তুত করা হয়েছে।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-shield-alt text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">অনেক ভালো ও মজবুত, টেকসই</strong> — দীর্ঘদিন ব্যবহার উপযোগী।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-eye text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">দেখতেও অনেক সুন্দর লাগে</strong> — হাতের কাজ ও ডিজাইনের কারুকার্য মনোমুগ্ধকর।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-moon text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">রাতে ঘুমানোর আগে</strong> এই পরিবেশ দেখতে অনেক বেশি শান্তি পাওয়া যায়।</p></div>
-                    </div>
-                    <div class="mt-8 p-5 bg-[#0B0E16]/80 rounded-xl border border-[#D4AF37]/20">
-                        <div class="flex items-center gap-2 mb-3"><i class="fas fa-info-circle text-[#D4AF37]"></i><span class="text-[#F7EFD6] font-semibold english-text">Product Details</span><span class="text-[#D4AF37] text-xs mx-2">|</span><span class="text-[#D4AF37] text-xs bengali-text">বিস্তারিত</span></div>
-                        <ul class="space-y-2 text-sm text-[#C9C6B5]">
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">উপাদান: উন্নত মানের পিভিসি পাইপ ও রিসাইকেলযোগ্য উপকরণ</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">আকার: কাস্টমাইজযোগ্য (স্ট্যান্ডার্ড সাইজ ৩x১২ ইঞ্চি)</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">এলইডি লাইট: এনার্জি সেভিং, লং লাস্টিং এলইডি স্ট্রিপ</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">ওজন: হালকা ও পোর্টেবল, যেকোনো জায়গায় লাগানো যাবে</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">ওয়ারেন্টি: ১ বছরের সার্ভিস ওয়ারেন্টি</span></li>
-                        </ul>
-                    </div>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/8801717902201" target="_blank" class="flex-1 flex items-center justify-center gap-3 bg-[#D4AF37] text-black font-bold py-3 rounded-full hover:bg-[#C59B2E] transition-all shadow-lg"><i class="fab fa-whatsapp text-xl"></i> <span class="english-text">Order Now / অর্ডার করুন</span></a>
-                        <button id="closeModalBtn" class="flex-1 border border-[#D4AF37]/60 text-[#D4AF37] font-medium py-3 rounded-full hover:bg-[#D4AF37]/10 transition-all bengali-text">বন্ধ করুন</button>
-                    </div>
-                </div>
-            `;
-        }
-        else if(productId === 'alMuhammad') {
-            contentHtml = `
-                <button id="closeModal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center justify-center text-xl">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
-                    <img src="images/product2.jpg" alt="আল-মুহাম্মদ" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/1e2335/D4AF37?text=Al-Muhammad'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-transparent to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-4 py-1.5 rounded-full text-sm font-bold border border-[#D4AF37]/50">
-                        <i class="fas fa-star mr-1"></i> Bestseller
-                    </div>
-                </div>
-                <div class="p-6 md:p-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[#F7EFD6] mb-2 bengali-text">আল-মুহাম্মদ</h2>
-                    <h3 class="text-lg text-[#D4AF37] mb-4 english-text tracking-wide">Al-Muhammad — The Praised One</h3>
-                    <div class="w-20 h-[2px] bg-[#D4AF37]/60 mb-6"></div>
-                    <div class="space-y-5">
-                        <div class="flex gap-3 items-start"><i class="fas fa-gem text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">রৌপ্য ও সোনালি রেখায়</strong> ফুটিয়ে তোলা নবীজির নাম (সা.) — শ্রদ্ধা ও আভিজাত্যের প্রতীক।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-palette text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">হাতের লেখা ক্যালিগ্রাফি</strong> প্রতিটি লাইন যত্ন সহকারে ডিজাইন করা হয়েছে।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-charging-station text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">এনার্জি সেভিং এলইডি</strong> লাইট ব্যবহার করা হয়েছে — বিদ্যুৎ বিলের চিন্তা নেই।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-home text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">যে কোনো জায়গায় বসানো যায়</strong> — বসার ঘর, অফিস, মসজিদ কিংবা উপহার হিসেবে দারুণ পছন্দ।</p></div>
-                    </div>
-                    <div class="mt-8 p-5 bg-[#0B0E16]/80 rounded-xl border border-[#D4AF37]/20">
-                        <div class="flex items-center gap-2 mb-3"><i class="fas fa-info-circle text-[#D4AF37]"></i><span class="text-[#F7EFD6] font-semibold english-text">Product Details</span><span class="text-[#D4AF37] text-xs mx-2">|</span><span class="text-[#D4AF37] text-xs bengali-text">বিস্তারিত</span></div>
-                        <ul class="space-y-2 text-sm text-[#C9C6B5]">
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">উপাদান: হাই কোয়ালিটি এমডিএফ ও সোনালি রঙের ফিনিশিং</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">আকার: ৩ x ১২ ইঞ্চি (কাস্টম সাইজও পাওয়া যাবে)</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">লাইটিং: ওয়ার্ম হোয়াইট এলইডি, ৩ ভোল্ট ব্যাটারি অথবা অ্যাডাপ্টার</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">ওজন: ১.২ কেজি (প্রায়)</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">ডেলিভারি: বাংলাদেশ-সহ পৃথীবির  যেকোন জায়গায় কুরিয়ারে পাঠানো হয়</span></li>
-                        </ul>
-                    </div>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/8801717902201" target="_blank" class="flex-1 flex items-center justify-center gap-3 bg-[#D4AF37] text-black font-bold py-3 rounded-full hover:bg-[#C59B2E] transition-all shadow-lg"><i class="fab fa-whatsapp text-xl"></i> <span class="english-text">Order Now / অর্ডার করুন</span></a>
-                        <button id="closeModalBtn" class="flex-1 border border-[#D4AF37]/60 text-[#D4AF37] font-medium py-3 rounded-full hover:bg-[#D4AF37]/10 transition-all bengali-text">বন্ধ করুন</button>
-                    </div>
-                </div>
-            `;
-        }
-        else if(productId === 'heritage') {
-            contentHtml = `
-                <button id="closeModal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center justify-center text-xl">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
-                    <img src="images/product3.jpg" alt="ঐতিহ্য প্রদীপ" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/1e2335/D4AF37?text=Heritage+Lamp'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-transparent to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-[#D4AF37] px-4 py-1.5 rounded-full text-sm font-bold border border-[#D4AF37]/50">
-                        <i class="fas fa-leaf mr-1"></i> Heritage Collection
-                    </div>
-                </div>
-                <div class="p-6 md:p-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[#F7EFD6] mb-2 bengali-text">ঐতিহ্য প্রদীপ</h2>
-                    <h3 class="text-lg text-[#D4AF37] mb-4 english-text tracking-wide">Heritage Lamp — A Tribute to Bengal</h3>
-                    <div class="w-20 h-[2px] bg-[#D4AF37]/60 mb-6"></div>
-                    <div class="space-y-5">
-                        <div class="flex gap-3 items-start"><i class="fas fa-landmark text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">বাংলার মৃৎশিল্পের মোটিফ</strong> ও আধুনিক LED প্রযুক্তির অপূর্ব মিশ্রণ।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-paint-brush text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">হাতে আঁকা ডিজাইন</strong> — প্রতিটি প্রদীপে কাজ করেছে বাংলার কারিগর।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-recycle text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">পরিবেশবান্ধব উপকরণ</strong> দিয়ে তৈরি — ইকো ফ্রেন্ডলি প্রোডাক্ট।</p></div>
-                        <div class="flex gap-3 items-start"><i class="fas fa-mosque text-[#D4AF37] text-xl mt-1"></i><p class="text-[#E4D5B6] leading-relaxed bengali-text text-lg"><strong class="text-[#D4AF37]">মাহফিল, মিলাদ, ঈদের আয়োজন</strong> — সব ধরনের অনুষ্ঠানের জন্য উপযোগী।</p></div>
-                    </div>
-                    <div class="mt-8 p-5 bg-[#0B0E16]/80 rounded-xl border border-[#D4AF37]/20">
-                        <div class="flex items-center gap-2 mb-3"><i class="fas fa-info-circle text-[#D4AF37]"></i><span class="text-[#F7EFD6] font-semibold english-text">Product Details</span><span class="text-[#D4AF37] text-xs mx-2">|</span><span class="text-[#D4AF37] text-xs bengali-text">বিস্তারিত</span></div>
-                        <ul class="space-y-2 text-sm text-[#C9C6B5]">
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">উপাদান: পিভিসি পাইপ মোটিফ ও উডেন ফ্রেম</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">আকার: ৩ x ১২ ইঞ্চি থেকে ২০ x ২৪ ইঞ্চি পর্যন্ত অর্ডার করা যাবে</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">কালার: ম্যাট ব্ল্যাক, গোল্ডেন, ব্রোঞ্জ, কাস্টম কালারও সম্ভব</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">ডেলিভারি: বাংলাদেশ-সহ পৃথীবির  যেকোন জায়গায় কুরিয়ারে পাঠানো হয়</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check-circle text-[#D4AF37] text-xs mt-1"></i> <span class="bengali-text">মূল্য: ডিজাইন ও সাইজ ভেদে প্রাইজ/দাম (পাইকারিতে ছাড়)</span></li>
-                        </ul>
-                    </div>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/8801717902201" target="_blank" class="flex-1 flex items-center justify-center gap-3 bg-[#D4AF37] text-black font-bold py-3 rounded-full hover:bg-[#C59B2E] transition-all shadow-lg"><i class="fab fa-whatsapp text-xl"></i> <span class="english-text">Order Now / অর্ডার করুন</span></a>
-                        <button id="closeModalBtn" class="flex-1 border border-[#D4AF37]/60 text-[#D4AF37] font-medium py-3 rounded-full hover:bg-[#D4AF37]/10 transition-all bengali-text">বন্ধ করুন</button>
-                    </div>
-                </div>
-            `;
-        }
-        
-        if(modalContent) modalContent.innerHTML = contentHtml;
-        
-        // ক্লোজ বাটন ইভেন্ট
-        const newCloseBtn = document.getElementById('closeModal');
-        const newCloseBtn2 = document.getElementById('closeModalBtn');
-        const newOverlay = document.getElementById('modalOverlay');
-        if(newCloseBtn) newCloseBtn.addEventListener('click', closeModal);
-        if(newCloseBtn2) newCloseBtn2.addEventListener('click', closeModal);
-        if(newOverlay) newOverlay.addEventListener('click', closeModal);
-    }
-    
-    function openModal(productId) {
-        updateModalContent(productId);
-        if(modal) {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-        if(modalContent) {
-            setTimeout(() => {
-                modalContent.classList.remove('scale-95', 'opacity-0');
-                modalContent.classList.add('scale-100', 'opacity-100');
-            }, 50);
-        }
-        document.body.style.overflow = 'hidden';
-    }
-    
-    // বিস্তারিত বাটন ইভেন্ট
-    const detailBtns = document.querySelectorAll('.detail-btn');
-    detailBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const product = this.getAttribute('data-product');
-            openModal(product);
         });
     });
     
-    // ESC কী প্রেস করলেও বন্ধ হবে
-    document.addEventListener('keydown', function(e) {
-        if(e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-            closeModal();
+    // Quick Order Box
+    document.getElementById('quickOrderBtn')?.addEventListener('click', function() {
+        const name = document.getElementById('orderName')?.value.trim() || '';
+        const phone = document.getElementById('orderPhone')?.value.trim() || '';
+        const details = document.getElementById('orderDetails')?.value.trim() || '';
+        
+        if (!name && !details) {
+            alert('❌ অনুগ্রহ করে আপনার নাম এবং প্রয়োজনীয়তা লিখুন।\nPlease enter your name and requirements.');
+            return;
         }
+        
+        let message = `🛍️ *নতুন অর্ডার / New Order from Noor-E-Noksha*%0a%0a`;
+        message += `*👤 নাম / Name:* ${name || 'Not provided'}%0a`;
+        message += `*📞 নম্বর / Phone:* ${phone || 'Not provided'}%0a`;
+        message += `*📝 প্রয়োজনীয়তা / Requirements:* ${details || 'Not provided'}%0a%0a`;
+        message += `_Order submitted from website_`;
+        
+        window.open(`https://wa.me/8801717902201?text=${message}`, '_blank');
     });
 </script>
 
